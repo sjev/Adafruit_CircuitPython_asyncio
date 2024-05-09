@@ -10,9 +10,11 @@ import asyncio
 
 
 async def loop(id: int, delay: float = 0.1):
+    """print (i+1) dots"""
     for i in range(5):
-        print(f"loop {id} : {i}")
+        print(f"loop {id} : " + (i + 1) * ".")
         await asyncio.sleep(delay)
+    print(f"loop {id} : done")
 
 
 async def main():
