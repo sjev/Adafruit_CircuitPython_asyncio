@@ -150,7 +150,7 @@ async def open_connection(host, port):
     """
 
     from uerrno import EINPROGRESS
-    import usocket as socket
+    import socketpool as socket
 
     ai = socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM)[0]  # TODO this is blocking!
     s = socket.socket(ai[0], ai[1], ai[2])
@@ -222,7 +222,12 @@ async def start_server(cb, host, port, backlog=5):
     This is a coroutine.
     """
 
-    import usocket as socket
+    import wifi
+    import socketpool
+
+
+    socket = socketpool.SocketPool(wifi.radio)
+
 
     # Create and bind server socket.
     host = socket.getaddrinfo(host, port)[0]  # TODO this is blocking!
