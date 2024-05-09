@@ -1,0 +1,32 @@
+{
+  // use Dockerfile
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+
+  "initializeCommand": "mkdir -p /var/tmp/container-extensions",
+
+  "mounts": [
+    "source=/var/tmp/container-extensions,target=/home/dev/.vscode-server/extensions,type=bind,consistency=cached"
+  ],
+  // environment variables
+  "containerEnv": {
+    "MICROPYPATH": "/usr/lib/micropython:/workspaces/${localWorkspaceFolderBasename}"
+  },
+
+  "runArgs": ["--network", "host", "--privileged"],
+  // // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "shardulm94.trailing-spaces",
+        "njpwerner.autodocstring",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+      ]
+    }
+  }
+}

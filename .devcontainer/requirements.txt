@@ -1,0 +1,7 @@
+circuitpython-stubs
+invoke
+mpremote
+mypy
+pylint
+pytest
+ruff
